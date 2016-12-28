@@ -113,15 +113,16 @@ var GridTitle = React.createClass({
 
         //Get the row from the row settings.
         var className = that.props.rowSettings && that.props.rowSettings.getHeaderRowMetadataClass() || null;
+        const ComponentClass = that.props.isFooter ? 'tfoot' : 'thead';
 
         return (
-            <thead>
+            <ComponentClass>
             <tr
                 className={className}
                 style={this.props.headerStyles}>
                 {nodes}
             </tr>
-            </thead>
+            </ComponentClass>
         );
     }
 });

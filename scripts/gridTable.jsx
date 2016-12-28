@@ -249,6 +249,18 @@ var GridTable = React.createClass({
           rowSettings={this.props.rowSettings}/>
       : undefined);
 
+    //construct the table footer component
+    var tableFooter = (this.props.showTableFooter ?
+        <GridTitle useGriddleStyles={this.props.useGriddleStyles} useGriddleIcons={this.props.useGriddleIcons}
+          sortSettings={this.props.sortSettings}
+		  multipleSelectionSettings={this.props.multipleSelectionSettings}
+          columnSettings={this.props.columnSettings}
+          filterByColumn={this.props.filterByColumn}
+          rowSettings={this.props.rowSettings}
+          isFooter
+        />
+      : undefined);
+
     //check to see if any of the rows have children... if they don't wrap everything in a tbody so the browser doesn't auto do this
     if (!anyHasChildren){
       nodes = <tbody>{nodes}</tbody>
@@ -273,6 +285,7 @@ var GridTable = React.createClass({
     }
 
     // If we have a fixed header, split into two tables.
+    // Footer is not, currently, available in case we have a fixed header
     if (this.props.useFixedHeader){
       if (this.props.useGriddleStyles) {
         tableStyle.tableLayout = "fixed";
@@ -297,6 +310,7 @@ var GridTable = React.createClass({
                   {tableHeading}
                   {nodes}
                   {loadingContent}
+                  {tableFooter}
                   {pagingContent}
               </table>
             </div>

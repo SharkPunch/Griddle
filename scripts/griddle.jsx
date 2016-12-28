@@ -94,6 +94,7 @@ var Griddle = React.createClass({
             "customNoDataComponentProps": null,
             "allowEmptyGrid": false,
             "showTableHeading":true,
+            "showTableFooter":false,
             "showPager":true,
             "useFixedHeader":false,
             "useExternal": false,
@@ -865,6 +866,7 @@ var Griddle = React.createClass({
                 enableInfiniteScroll={this.isInfiniteScrollEnabled()}
                 nextPage={this.nextPage}
                 showTableHeading={this.props.showTableHeading}
+                showTableFooter={this.props.showTableFooter}
                 useFixedHeader={this.props.useFixedHeader}
                 parentRowCollapsedClassName={this.props.parentRowCollapsedClassName}
                 parentRowExpandedClassName={this.props.parentRowExpandedClassName}

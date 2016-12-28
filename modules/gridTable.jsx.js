@@ -247,6 +247,16 @@ var GridTable = React.createClass({
       filterByColumn: this.props.filterByColumn,
       rowSettings: this.props.rowSettings }) : undefined;
 
+    //construct the table footer component
+    var tableFooter = this.props.showTableFooter ? React.createElement(GridTitle, { useGriddleStyles: this.props.useGriddleStyles, useGriddleIcons: this.props.useGriddleIcons,
+      sortSettings: this.props.sortSettings,
+      multipleSelectionSettings: this.props.multipleSelectionSettings,
+      columnSettings: this.props.columnSettings,
+      filterByColumn: this.props.filterByColumn,
+      rowSettings: this.props.rowSettings,
+      isFooter: true
+    }) : undefined;
+
     //check to see if any of the rows have children... if they don't wrap everything in a tbody so the browser doesn't auto do this
     if (!anyHasChildren) {
       nodes = React.createElement('tbody', null, nodes);
@@ -265,6 +275,7 @@ var GridTable = React.createClass({
     }
 
     // If we have a fixed header, split into two tables.
+    // Footer is not, currently, available in case of fixed header
     if (this.props.useFixedHeader) {
       if (this.props.useGriddleStyles) {
         tableStyle.tableLayout = "fixed";
@@ -273,7 +284,7 @@ var GridTable = React.createClass({
       return React.createElement('div', null, React.createElement('table', { className: this.props.className, style: this.props.useGriddleStyles && tableStyle || null }, tableHeading), React.createElement('div', { ref: 'scrollable', onScroll: this.gridScroll, style: gridStyle }, React.createElement('table', { className: this.props.className, style: this.props.useGriddleStyles && tableStyle || null }, nodes, loadingContent, pagingContent)));
     }
 
-    return React.createElement('div', { ref: 'scrollable', onScroll: this.gridScroll, style: gridStyle }, React.createElement('table', { className: this.props.className, style: this.props.useGriddleStyles && tableStyle || null }, tableHeading, nodes, loadingContent, pagingContent));
+    return React.createElement('div', { ref: 'scrollable', onScroll: this.gridScroll, style: gridStyle }, React.createElement('table', { className: this.props.className, style: this.props.useGriddleStyles && tableStyle || null }, tableHeading, nodes, loadingContent, tableFooter, pagingContent));
   }
 });
 

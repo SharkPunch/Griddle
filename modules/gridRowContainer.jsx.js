@@ -97,6 +97,7 @@ var GridRowContainer = React.createClass({
             parentRowExpandedClassName: that.props.parentRowExpandedClassName,
             parentRowCollapsedClassName: that.props.parentRowCollapsedClassName,
             showTableHeading: false,
+            showTableFooter: false,
             showPager: false,
             columnMetadata: that.props.columnSettings.columnMetadata,
             parentRowExpandedComponent: that.props.parentRowExpandedComponent,
